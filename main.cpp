@@ -50,36 +50,31 @@ void Process()
 {
 		if (KeyCode == 'w')
 		{
-			if (Map[PlayerY - 1][PlayerX] == 1)
+			if (Predict(PlayerY - 1,PlayerX))
 			{
-				return;
+				PlayerY--;
 			}
-			PlayerY--;
-
 		}
 		else if (KeyCode == 's')
 		{
-			if (Map[PlayerY + 1][PlayerX] == 1)
+			if (Predict(PlayerY + 1, PlayerX))
 			{
-				return;
+				PlayerY++;
 			}
-			PlayerY++;
 		}
 		else if (KeyCode == 'a')
 		{
-			if (Map[PlayerY][PlayerX - 1] == 1)
+			if (Predict(PlayerY, PlayerX - 1))
 			{
-				return;
+				PlayerX--;
 			}
-			PlayerX--;
 		}
 		else if (KeyCode == 'd')
 		{
-			if (Map[PlayerY][PlayerX + 1] == 1)
+			if (Predict(PlayerY, PlayerX + 1))
 			{
-				return;
+				PlayerX++;
 			}
-			PlayerX++;
 		}
 		else if (KeyCode == 'q')
 		{
