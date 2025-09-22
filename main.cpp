@@ -1,8 +1,5 @@
 #include <iostream> // cpp standard
 #include <conio.h> // c standard
-#include <vector>
-#include <algorithm>
-#include <string>
 
 using namespace std;
 
@@ -31,13 +28,16 @@ char Sprites[10] = { ' ', '*', };
 
 int KeyCode = 0;
 
-bool Predict(int NewX, int NewY)
+bool Predict(int NewY, int NewX)
 {
-	if (Map[NewY][NewX] == 0)
+	if (NewY >= 0 && NewY < 10 && NewX >= 0 && NewX < 10)
 	{
-		return true;
+		if (Map[NewY][NewX] == 0)
+		{
+			return true;
+		}
 	}
-	
+
 	return false;
 }
 
@@ -48,38 +48,36 @@ void Input()
 
 void Process()
 {
-		if (KeyCode == 'w')
-		{
-			if (Predict(PlayerY - 1,PlayerX))
-			{
-				PlayerY--;
-			}
-		}
-		else if (KeyCode == 's')
-		{
-			if (Predict(PlayerY + 1, PlayerX))
-			{
-				PlayerY++;
-			}
-		}
-		else if (KeyCode == 'a')
-		{
-			if (Predict(PlayerY, PlayerX - 1))
-			{
-				PlayerX--;
-			}
-		}
-		else if (KeyCode == 'd')
-		{
-			if (Predict(PlayerY, PlayerX + 1))
-			{
-				PlayerX++;
-			}
-		}
-		else if (KeyCode == 'q')
-		{
-			bIsPlaying = false;
-		}
+	int nextX = PlayerX;
+	int nextY = PlayerY;
+
+	if (KeyCode == 'w')
+	{
+		nextY--;
+	}
+	else if (KeyCode == 's')
+	{
+		nextY++;
+	}
+	else if (KeyCode == 'a')
+	{
+		nextX--;
+	}
+	else if (KeyCode == 'd')
+	{
+		nextX++;
+	}
+	else if (KeyCode == 'q')
+	{
+		bIsPlaying = false;
+		return;
+	}
+
+	if (Predict(nextY, nextX))
+	{
+		PlayerX = nextX;
+		PlayerY = nextY;
+	}
 
 }
 
