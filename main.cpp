@@ -2,6 +2,7 @@
 #include <conio.h> // c standard
 #include <vector>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -36,26 +37,55 @@ void Input()
 }
 void Process()
 {
-	if (KeyCode == 'w')
-	{
-		PlayerY--;
-	}
-	else if (KeyCode == 's')
-	{
-		PlayerY++;
-	}
-	else if (KeyCode == 'a')
-	{
-		PlayerX--;
-	}
-	else if (KeyCode == 'd')
-	{
-		PlayerX++;
-	}
-	else if (KeyCode == 'q')
-	{
-		bIsPlaying = false;
-	}
+		if (KeyCode == 'w')
+		{
+			if (Map[PlayerY - 1][PlayerX] == 1)
+			{
+				return;
+			}
+			else if (Sprites[0])
+			{
+				PlayerY--;
+			}
+
+		}
+		else if (KeyCode == 's')
+		{
+			if (Map[PlayerY + 1][PlayerX] == 1)
+			{
+				return;
+			}
+			else if (Sprites[0])
+			{
+				PlayerY++;
+			}
+		}
+		else if (KeyCode == 'a')
+		{
+			if (Map[PlayerY][PlayerX - 1] == 1)
+			{
+				return;
+			}
+			else if (Sprites[0])
+			{
+				PlayerX--;
+			}
+		}
+		else if (KeyCode == 'd')
+		{
+			if (Map[PlayerY][PlayerX + 1] == 1)
+			{
+				return;
+			}
+			else if (Sprites[0])
+			{
+				PlayerX++;
+			}
+		}
+		else if (KeyCode == 'q')
+		{
+			bIsPlaying = false;
+		}
 
 }
 void Render()
@@ -68,10 +98,12 @@ void Render()
 			if (PlayerX == X && PlayerY == Y)
 			{
 				cout << PlayerShape;
+				
 			}
 			else
 			{
 				cout << Sprites[Map[Y][X]];
+				
 			}
 		}
 		cout << "\n";
@@ -80,8 +112,6 @@ void Render()
 
 int main()
 {
-	
-
 	//frame
 	while (bIsPlaying)
 	{
