@@ -43,7 +43,7 @@ void Process()
 			{
 				return;
 			}
-			else
+			else if (Sprites[0])
 			{
 				PlayerY--;
 			}
@@ -55,7 +55,7 @@ void Process()
 			{
 				return;
 			}
-			else
+			else if (Sprites[0])
 			{
 				PlayerY++;
 			}
@@ -66,7 +66,7 @@ void Process()
 			{
 				return;
 			}
-			else
+			else if (Sprites[0])
 			{
 				PlayerX--;
 			}
@@ -77,7 +77,7 @@ void Process()
 			{
 				return;
 			}
-			else
+			else if (Sprites[0])
 			{
 				PlayerX++;
 			}
