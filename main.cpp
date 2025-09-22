@@ -9,7 +9,11 @@ int main()
 
 	for (int i = 1; i <= 100; i++)
 	{
-		total += i;
+		if (i % 3 == 0)
+		{
+			total += i;
+		}
+		
 	}
 
 	cout << total;
