@@ -4,23 +4,43 @@ using namespace std;
 
 int main()
 {
-	int NumArray[10] = { 0, };
-
-	for (int j = 0; j < 5; j++)
+	int Map[10][10] = 
 	{
-		for (int i = 0; i < j; ++i)
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	};
+
+	int PlayerX = 1;
+	int PlayerY = 1;
+	char PlayerShape = 'P';
+
+	//»ç»ó(Mapping)
+	char Sprites[10] = { ' ', '*', };
+
+	//Render();
+	for (int Y = 0; Y < 10; Y++)
+	{
+		for (int X = 0; X < 10; X++)
 		{
-			cout << " ";
-			
+			if (PlayerX == X && PlayerY == Y)
+			{
+				cout << PlayerShape;
+			}
+			else
+			{
+				cout << Sprites[Map[Y][X]];
+			}
 		}
-		for (int k = 0; k < 5-j; ++k)
-		{
-			cout << "*";
-		}
-		
 		cout << "\n";
 	}
-	
 
 	return 0;
 }
