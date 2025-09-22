@@ -31,10 +31,21 @@ char Sprites[10] = { ' ', '*', };
 
 int KeyCode = 0;
 
+bool Predict(int NewX, int NewY)
+{
+	if (Map[NewY][NewX] == 0)
+	{
+		return true;
+	}
+	
+	return false;
+}
+
 void Input()
 {
 	KeyCode = _getch();
 }
+
 void Process()
 {
 		if (KeyCode == 'w')
@@ -43,10 +54,7 @@ void Process()
 			{
 				return;
 			}
-			else if (Sprites[0])
-			{
-				PlayerY--;
-			}
+			PlayerY--;
 
 		}
 		else if (KeyCode == 's')
@@ -55,10 +63,7 @@ void Process()
 			{
 				return;
 			}
-			else if (Sprites[0])
-			{
-				PlayerY++;
-			}
+			PlayerY++;
 		}
 		else if (KeyCode == 'a')
 		{
@@ -66,10 +71,7 @@ void Process()
 			{
 				return;
 			}
-			else if (Sprites[0])
-			{
-				PlayerX--;
-			}
+			PlayerX--;
 		}
 		else if (KeyCode == 'd')
 		{
@@ -77,10 +79,7 @@ void Process()
 			{
 				return;
 			}
-			else if (Sprites[0])
-			{
-				PlayerX++;
-			}
+			PlayerX++;
 		}
 		else if (KeyCode == 'q')
 		{
@@ -88,6 +87,7 @@ void Process()
 		}
 
 }
+
 void Render()
 {
 	system("cls");
